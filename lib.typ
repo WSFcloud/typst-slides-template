@@ -319,6 +319,7 @@
 
 #let oxygen-theme(
     aspect-ratio: "16-9",
+    handout: false,
     header: self => utils.display-current-heading(
         setting: utils.fit-to-width.with(grow: false, 100%),
         depth: self.slide-level,
@@ -356,6 +357,7 @@
             footer-c: footer-c,
         ),
         config-common(
+            handout: handout,
             slide-fn: slide,
             new-section-slide-fn: new-section-slide,
             // slide-level: 2

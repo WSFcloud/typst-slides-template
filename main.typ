@@ -122,6 +122,7 @@
 // #let title-logo = image("figures/logo/logo.svg", height: 20%)
 #show: oxygen-theme.with(
     aspect-ratio: "16-9",
+    handout: false,
     config-info(
         title: [Typst template for writing slides],
         subtitle: [Subtitle of slides],
@@ -560,8 +561,8 @@ Write inline equations like #mi("x") or #mi[y].
 块级公式：
 
 $
-                 E=m c^2                                     \
-    angle.l a, b angle.r & = arrow(a) dot arrow(b)           \
+                 E=m c^2 \
+    angle.l a, b angle.r & = arrow(a) dot arrow(b) \
                          & = a_1 b_1 + a_2 b_2 + ... a_n b_n \
                          & = sum_(i=1)^n a_i b_i.
 $
@@ -607,9 +608,11 @@ $
     import timeliney: *
 
     headerline(group(([*2023*], 4)), group(([*2024*], 4)))
-    headerline(group(..range(4).map(n => strong("Q" + str(n + 1)))), group(..range(4).map(n => strong(
-        "Q" + str(n + 1),
-    ))))
+    headerline(group(..range(4).map(n => strong("Q" + str(n + 1)))), group(
+        ..range(4).map(n => strong(
+            "Q" + str(n + 1),
+        )),
+    ))
 
     taskgroup(title: [*Research*], {
         task("Research the market", (0, 2), style: (stroke: 2pt + gray))
@@ -733,18 +736,18 @@ print(fib(25))
         set text(font: "Arial", weight: 600)
 
         diagram(
-          node-stroke: 1pt,
-          edge-stroke: 1pt,
-          node((0, 0), [Start], corner-radius: 2pt, extrude: (0, 3)),
-          edge("-|>"),
-          node(
-              (0, 1),
-              align(center)[
-                  Hey, wait,\ this flowchart\ is a trap!
-              ],
-              shape: diamond,
-          ),
-          edge("d,r,u,l", "-|>", [Yes], label-pos: 0.1),
+            node-stroke: 1pt,
+            edge-stroke: 1pt,
+            node((0, 0), [Start], corner-radius: 2pt, extrude: (0, 3)),
+            edge("-|>"),
+            node(
+                (0, 1),
+                align(center)[
+                    Hey, wait,\ this flowchart\ is a trap!
+                ],
+                shape: diamond,
+            ),
+            edge("d,r,u,l", "-|>", [Yes], label-pos: 0.1),
         )
     })
 ]
@@ -773,17 +776,17 @@ print(fib(25))
     #align(center, {
         set text(10pt)
         diagram(
-          node-stroke: .1em,
-          node-fill: gradient.radial(blue.lighten(80%), blue, center: (30%, 20%), radius: 80%),
-          spacing: 4em,
-          edge((-1, 0), "r", "-|>", `open(path)`, label-pos: 0, label-side: center),
-          node((0, 0), `reading`, radius: 2em),
-          edge(`read()`, "-|>"),
-          node((1, 0), `eof`, radius: 2em),
-          edge(`close()`, "-|>"),
-          node((2, 0), `closed`, radius: 2em, extrude: (-2.5, 0)),
-          edge((0, 0), (0, 0), `read()`, "--|>", bend: 130deg),
-          edge((0, 0), (2, 0), `close()`, "-|>", bend: -40deg),
+            node-stroke: .1em,
+            node-fill: gradient.radial(blue.lighten(80%), blue, center: (30%, 20%), radius: 80%),
+            spacing: 4em,
+            edge((-1, 0), "r", "-|>", `open(path)`, label-pos: 0, label-side: center),
+            node((0, 0), `reading`, radius: 2em),
+            edge(`read()`, "-|>"),
+            node((1, 0), `eof`, radius: 2em),
+            edge(`close()`, "-|>"),
+            node((2, 0), `closed`, radius: 2em, extrude: (-2.5, 0)),
+            edge((0, 0), (0, 0), `read()`, "--|>", bend: 130deg),
+            edge((0, 0), (2, 0), `close()`, "-|>", bend: -40deg),
         )
     })
 ]
@@ -824,22 +827,22 @@ print(fib(25))
         showybox([Hello world!])
 
         showybox(
-          frame: (
-              dash: "dashed",
-              border-color: red.darken(40%),
-          ),
-          body-style: (
-              align: center,
-          ),
-          sep: (
-              dash: "dashed",
-          ),
-          shadow: (
-              offset: (x: 2pt, y: 3pt),
-              color: yellow.lighten(70%),
-          ),
-          [This is an important message!],
-          [Be careful outside. There are dangerous bananas!],
+            frame: (
+                dash: "dashed",
+                border-color: red.darken(40%),
+            ),
+            body-style: (
+                align: center,
+            ),
+            sep: (
+                dash: "dashed",
+            ),
+            shadow: (
+                offset: (x: 2pt, y: 3pt),
+                color: yellow.lighten(70%),
+            ),
+            [This is an important message!],
+            [Be careful outside. There are dangerous bananas!],
         )
     })
 ]
@@ -981,6 +984,7 @@ print(fib(25))
 == 参考文献
 #slide[
     #set text(size: 15pt)
+    #set grid(align: top)
     #bibliography("ref.bib", style: "gb-7714-2015-numeric", title: none)
 ]
 
