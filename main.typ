@@ -1,10 +1,10 @@
 // https://typst.app/universe/package/touying
-#import "@preview/touying:0.6.1" as ty: *
+#import "@preview/touying:0.7.4" as ty: *
 
 // #import "@preview/oxygen-touying-simpl:1.0.0" :*
 #import "lib.typ": *
 // https://typst.app/universe/package/timeliney
-#import "@preview/timeliney:0.2.1"
+#import "@preview/timeliney:0.4.0"
 
 // 编号
 #import "@preview/numbly:0.1.0": numbly
@@ -13,7 +13,7 @@
 // 代码块
 // https://typst.app/universe/package/codly
 #import "@preview/codly:1.3.0": *
-#import "@preview/codly-languages:0.1.1": *
+#import "@preview/codly-languages:0.1.10": *
 #show: codly-init.with()
 #codly(languages: codly-languages, zebra-fill: none, stroke: 1pt + black)
 
@@ -23,7 +23,7 @@
 
 // 类obsidian
 // https://typst.app/universe/package/gentle-clues
-#import "@preview/gentle-clues:1.2.0": *
+#import "@preview/gentle-clues:1.3.1": *
 
 // 箭头图表绘制
 //https://typst.app/universe/package/fletcher
@@ -36,7 +36,7 @@
 #import "@preview/octique:0.1.0": *
 
 // 使用LaTeX输入公式
-#import "@preview/mitex:0.2.2": *
+#import "@preview/mitex:0.2.7": *
 
 // 数学定理相关
 //https://typst.app/universe/package/ctheorems
@@ -81,7 +81,7 @@
 ))
 // 公式环境中文字体
 #show math.equation: set text(font: (
-    (name: "Noto Serif SC", covers: regex("\p{script=Han}")),
+    (name: "Noto Serif CJK SC", covers: regex("\p{script=Han}")),
     "New Computer Modern Math",
 ))
 
@@ -127,7 +127,7 @@
         title: [Typst template for writing slides],
         subtitle: [Subtitle of slides],
         author: [author name],
-        // date: datetime.today(),
+        date: datetime.today(),
         // institution: [计算机科学与技术学院],
         // logo: title-logo,
     ),
