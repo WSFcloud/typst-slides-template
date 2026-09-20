@@ -120,6 +120,7 @@
 #show: oxygen-theme.with(
     aspect-ratio: "16-9",
     handout: false,
+    show-footer: false,
     config-info(
         title: [Typst template for writing slides],
         subtitle: [Subtitle of slides],
@@ -558,10 +559,10 @@ Write inline equations like #mi("x") or #mi[y].
 块级公式：
 
 $
-                 E=m c^2 \
+                     E=m c^2 \
     chevron.l a, b chevron.r & = arrow(a) dot arrow(b) \
-                         & = a_1 b_1 + a_2 b_2 + ... a_n b_n \
-                         & = sum_(i=1)^n a_i b_i.
+                             & = a_1 b_1 + a_2 b_2 + ... a_n b_n \
+                             & = sum_(i=1)^n a_i b_i.
 $
 
 == 数学定理

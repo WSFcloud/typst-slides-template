@@ -186,7 +186,7 @@
     let self = ty.utils.merge-dicts(self, config-page(
         fill: self.colors.neutral-lightest,
         header: header,
-        footer: self.methods.footer,
+        footer: if self.store.show-footer { self.methods.footer } else { none },
     ))
     let new-setting = body => {
         show: std.align.with(horizon)
@@ -341,6 +341,7 @@
 #let oxygen-theme(
     aspect-ratio: "16-9",
     handout: false,
+    show-footer: true,
     header: self => utils.display-current-heading(
         setting: utils.fit-to-width.with(grow: false, 100%),
         depth: self.slide-level,
@@ -370,6 +371,7 @@
         config-store(
             align: align,
             alpha: 60%,
+            show-footer: show-footer,
             footer: true,
             header: header,
             header-right: none,
