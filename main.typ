@@ -1,6 +1,3 @@
-// https://typst.app/universe/package/touying
-#import "@preview/touying:0.7.4" as ty: *
-
 // #import "@preview/oxygen-touying-simpl:1.0.0" :*
 #import "lib.typ": *
 // https://typst.app/universe/package/timeliney
@@ -33,7 +30,7 @@
 #import "@preview/pinit:0.2.2": *
 
 // 更多icon
-#import "@preview/octique:0.1.0": *
+#import "@preview/octique:0.1.1": *
 
 // 使用LaTeX输入公式
 #import "@preview/mitex:0.2.7": *
@@ -562,7 +559,7 @@ Write inline equations like #mi("x") or #mi[y].
 
 $
                  E=m c^2 \
-    angle.l a, b angle.r & = arrow(a) dot arrow(b) \
+    chevron.l a, b chevron.r & = arrow(a) dot arrow(b) \
                          & = a_1 b_1 + a_2 b_2 + ... a_n b_n \
                          & = sum_(i=1)^n a_i b_i.
 $

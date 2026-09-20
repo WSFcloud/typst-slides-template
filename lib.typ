@@ -2,7 +2,7 @@
 // https://github.com/Dregen-Yor/sdu-touying-simpl
 
 // https://typst.app/universe/package/touying
-#import "@preview/touying:0.6.1" as ty: *
+#import "@preview/touying:0.7.4" as ty: *
 
 #let oxygen-blue = rgb("#062958")
 #set text(region: "CN")
@@ -204,22 +204,43 @@
     let slide-body = {
         set std.align(horizon)
         show: pad.with(20%)
-        set text(size: 1.5em)
+        let heading-font-size = 1.5em
+        let heading-area = {
+            set text(size: heading-font-size)
+            stack(
+              dir: ttb,
+              spacing: 1em,
+              text(self.colors.neutral-darkest, utils.display-current-heading(
+                  level: level,
+                  numbered: numbered,
+                  style: (setting: none, numbered: true, current-heading) => {
+                      let current-level = current-heading.level
+                      if current-level == 1 {
+                          text(.715em, current-heading)
+                      } else if current-level == 2 {
+                          text(.835em, current-heading)
+                      } else {
+                          current-heading
+                      }
+                  },
+              )),
+              block(height: 2pt, width: 100%, spacing: 0pt, components.progress-bar(
+                  height: 2pt,
+                  self.colors.primary,
+                  self.colors.primary-light,
+              )),
+            )
+        }
+        let body-area = { text(self.colors.neutral-dark, body) }
         stack(
-          dir: ttb,
-          spacing: 1em,
-          text(self.colors.neutral-darkest, utils.display-current-heading(
-              level: level,
-              numbered: numbered,
-              style: auto,
-          )),
-          block(height: 2pt, width: 100%, spacing: 0pt, components.progress-bar(
-              height: 2pt,
-              self.colors.primary,
-              self.colors.primary-light,
-          )),
+            dir: ttb,
+            spacing: 0pt,
+            context place(
+                dy: measure(heading-area).height + heading-font-size,
+                body-area,
+            ),
+            heading-area,
         )
-        text(self.colors.neutral-dark, body)
     }
     self = utils.merge-dicts(self, config-page(fill: self.colors.neutral-lightest, header: header))
     touying-slide(self: self, config: config, slide-body)
@@ -360,6 +381,7 @@
             handout: handout,
             slide-fn: slide,
             new-section-slide-fn: new-section-slide,
+            receive-body-for-new-section-slide-fn: true,
             // slide-level: 2
         ),
         config-page(
