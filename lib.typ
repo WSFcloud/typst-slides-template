@@ -415,6 +415,8 @@
                 set enum(numbering: "1.1.", full: true)
                 show figure.caption: set text(size: 0.6em)
                 show footnote.entry: set text(size: 0.6em)
+                set footnote.entry(indent: 0em)
+                show footnote.entry: it => par(hanging-indent: 0.4em, it)
                 show link: it => if type(it.dest) == str {
                     set text(fill: self.colors.primary)
                     it
